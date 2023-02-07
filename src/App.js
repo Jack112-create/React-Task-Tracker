@@ -26,10 +26,6 @@ function App() {
     }
   ])
 
-  const toggleAddTask = () => {
-    setShowAddTask(!showAddTask);
-  }
-
   // Add Task
   const addTask = (task) => {
     const id = Math.floor(Math.random() * 10000) + 1;
@@ -52,7 +48,7 @@ function App() {
 
   return (
     <div className="container">
-      <Header toggleAddTask={toggleAddTask} title="Task Tracker"/>
+      <Header onAdd={() => setShowAddTask(!showAddTask)} showAdd={showAddTask} title="Task Tracker"/>
       {showAddTask ? <AddTask onAdd={addTask} /> : ''}
       {tasks.length ? <Tasks onToggle={toggleReminder} tasks={tasks} onDelete={deleteTask} /> : 'No Tasks Available'}
     </div>
